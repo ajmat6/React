@@ -13,6 +13,11 @@ export default function TextForm(props) {
     settext(text.toUpperCase());
   }
 
+  const lowerCase = (e) => {
+    e.preventDefault();
+    settext(text.toLowerCase());
+  }
+
   const handleOnChange = (e) => {
     console.log("Handle on change");
     settext(e.target.value);
@@ -23,12 +28,25 @@ export default function TextForm(props) {
   }
 
   return (
-    <form>
-        <h2>{props.heading}</h2>
-        <div className="mb-3">
-            <textarea className="form-control" id="exampleFormControlTextarea1" value={text} onClick={textareaClick}  onChange={handleOnChange} rows="8"></textarea>
-        </div>
-        <button type="submit" className="btn btn-primary" onClick={upperCase}>Convert to UpperCase</button>
-    </form>
+    <>
+    <div className="container my-5">
+      <form>
+          <h2>{props.heading}</h2>
+          <div className="mb-3">
+              <textarea className="form-control" id="exampleFormControlTextarea1" value={text} onClick={textareaClick}  onChange={handleOnChange} rows="8"></textarea>
+          </div>
+          <button type="submit" className="btn btn-primary" onClick={upperCase}>Convert to UpperCase</button>
+          <button type="submit" className="btn btn-primary mx-3" onClick={lowerCase}>Convert to LowerCase</button>
+      </form>
+    </div>
+
+    <div className="container my-3">
+      <h2>Entered Text Summary</h2>
+      <p>{text.split(" ").length} Words and {text.length} Characers</p>
+      <p>The Entered Text can be read in {text.split(" ").length * 0.008} Minutes</p>
+      <h2>Preview</h2>
+      <p>{text}</p>
+    </div>
+    </>
   )
 }
