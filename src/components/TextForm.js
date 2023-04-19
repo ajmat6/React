@@ -18,6 +18,13 @@ export default function TextForm(props) {
     settext(text.toLowerCase());
   }
 
+  const speak = (e) => {
+    e.preventDefault();
+    const voiceTaken = new SpeechSynthesisUtterance();
+    voiceTaken.text = text;
+    window.speechSynthesis.speak(voiceTaken);
+  }
+
   const handleOnChange = (e) => {
     console.log("Handle on change");
     settext(e.target.value);
@@ -37,6 +44,7 @@ export default function TextForm(props) {
           </div>
           <button type="submit" className="btn btn-primary" onClick={upperCase}>Convert to UpperCase</button>
           <button type="submit" className="btn btn-primary mx-3" onClick={lowerCase}>Convert to LowerCase</button>
+          <button type="submit" className="btn btn-primary mx-3" onClick={speak}>Play Sound of Entered Text</button>
       </form>
     </div>
 
