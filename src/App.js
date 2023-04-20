@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
-import "./App.css";
+// import "./App.css";
 import Navbar from "./components/Navbar";
+import About from "./components/About";
 import TextForm from "./components/TextForm";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Navbar title="TextChanger" aboutme="About Us"/> 
       <div className="container">
         <TextForm heading="Enter the text you want to convert into Upper Case"/>
+        {/* <About /> */}
       </div>
     </>
   );
