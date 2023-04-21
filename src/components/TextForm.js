@@ -25,6 +25,18 @@ export default function TextForm(props) {
     window.speechSynthesis.speak(voiceTaken);
   }
 
+  const copy = (e) => {
+    e.preventDefault();
+    let text = document.getElementById('exampleFormControlTextarea1').innerHTML;
+    navigator.clipboard.writeText(text);
+  }
+
+  const HandleExtraSpaces =  (e) => {
+    e.preventDefault();
+    let newtext = text.split(/[ ]+/); //Using regex
+    settext(newtext.join(" "));
+  }
+
   const handleOnChange = (e) => {
     console.log("Handle on change");
     settext(e.target.value);
@@ -45,6 +57,8 @@ export default function TextForm(props) {
           <button type="submit" className="btn btn-primary" onClick={upperCase}>Convert to UpperCase</button>
           <button type="submit" className="btn btn-primary mx-3" onClick={lowerCase}>Convert to LowerCase</button>
           <button type="submit" className="btn btn-primary mx-3" onClick={speak}>Play Sound of Entered Text</button>
+          <button type="submit" className="btn btn-primary mx-3" onClick={copy}>Copy the Entered Text</button>
+          <button type="submit" className="btn btn-primary mx-3" onClick={HandleExtraSpaces}>Remove Extra Spaces</button>
       </form>
     </div>
 
