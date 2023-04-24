@@ -48,11 +48,14 @@ export default function TextForm(props) {
 
   return (
     <>
-    <div className="container my-5">
+    {/* In below style one {} is for writing Js and other {} is for writing an object as you can define many styles here */}
+    {/* Ternary Operator is used. */}
+    <div className="container my-5" style={{color: props.mode === 'dark'?'white':'black'}}>
       <form>
           <h2>{props.heading}</h2>
           <div className="mb-3">
-              <textarea className="form-control" id="exampleFormControlTextarea1" value={text} onClick={textareaClick}  onChange={handleOnChange} rows="8"></textarea>
+              {/* in style we are changing the color of the textarea on the change of the mode. */}
+              <textarea className="form-control" id="exampleFormControlTextarea1" style={{backgroundColor: props.mode === 'dark'?'#282c34':'white', color: props.mode === 'dark'?'white':'black'}} value={text} onClick={textareaClick}  onChange={handleOnChange} rows="8"></textarea>
           </div>
           <button type="submit" className="btn btn-primary" onClick={upperCase}>Convert to UpperCase</button>
           <button type="submit" className="btn btn-primary mx-3" onClick={lowerCase}>Convert to LowerCase</button>
@@ -62,12 +65,13 @@ export default function TextForm(props) {
       </form>
     </div>
 
-    <div className="container my-3">
+    <div className="container my-3" style={{color: props.mode === 'dark'?'white':'black'}}>
       <h2>Entered Text Summary</h2>
       <p>{text.split(" ").length} Words and {text.length} Characers</p>
       <p>The Entered Text can be read in {text.split(" ").length * 0.008} Minutes</p>
       <h2>Preview</h2>
-      <p>{text}</p>
+      {/* Preview basic js logic */}
+      <p>{text.length>1?text:"Enter some Text to Preview it!"}</p>
     </div>
     </>
   )
