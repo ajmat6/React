@@ -27,9 +27,9 @@ function App() {
     <>
       {/* If props values are not passed, then it will take defaultProps values */}
       {/* passing mode in the navbar. */}
-      <Navbar title="TextChanger" aboutme="About Us" mode={mode} changeMode={changeMode} /> 
+      <Navbar title="TextAnalyzer" aboutme="About Us" mode={mode} changeMode={changeMode} /> 
       <div className="container">
-        <TextForm heading="Enter the text you want to convert into Upper Case" mode={mode}/> 
+        <TextForm heading="Enter the text" mode={mode}/> 
         {/* <About /> */}
       </div>
     </>
