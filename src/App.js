@@ -15,6 +15,10 @@ function App() {
       msg : message,
       type : type
     })
+
+    setTimeout(() => {
+      setalert(null); //null alert means no alert
+    }, 2000);
   }
 
   // changeMode function:
