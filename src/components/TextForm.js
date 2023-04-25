@@ -11,11 +11,14 @@ export default function TextForm(props) {
     e.preventDefault();
     console.log("Convert to UpperCase clicked");
     settext(text.toUpperCase());
+    //showing the alert in Each of the functions
+    props.showalert("Converted To Upper Case", "success");
   }
 
   const lowerCase = (e) => {
     e.preventDefault();
     settext(text.toLowerCase());
+    props.showalert("Converted To Lower Case", "success");
   }
 
   const speak = (e) => {
@@ -23,18 +26,21 @@ export default function TextForm(props) {
     const voiceTaken = new SpeechSynthesisUtterance();
     voiceTaken.text = text;
     window.speechSynthesis.speak(voiceTaken);
+    props.showalert("Speaking what you Entered", "success");
   }
 
   const copy = (e) => {
     e.preventDefault();
     let text = document.getElementById('exampleFormControlTextarea1').innerHTML;
     navigator.clipboard.writeText(text);
+    props.showalert("Text Copied", "success");
   }
 
   const HandleExtraSpaces =  (e) => {
     e.preventDefault();
     let newtext = text.split(/[ ]+/); //Using regex
     settext(newtext.join(" "));
+    props.showalert("Extra Spaces Removed", "success");
   }
 
   const handleOnChange = (e) => {
