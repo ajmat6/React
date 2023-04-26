@@ -29,12 +29,14 @@ function App() {
       //Because this changeMode function is in App.js, therfore its body is whole website body so we can change its background color from here easily.
       document.body.style.backgroundColor = '#282c34';
       showalert("Dark Mode Enabled!", "success");
+      document.title = "TextAnalyzer - Dark Mode";
     }
     else
     {
       setmode('light');
       document.body.style.backgroundColor = 'white';
       showalert("Light Mode Enabled!", "success");
+      document.title = "TextAnalyzer - Light Mode";
     } 
   }
 
