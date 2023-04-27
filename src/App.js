@@ -1,10 +1,16 @@
 // import logo from './logo.svg';
 // import "./App.css";
-import react, {useState} from 'react'
+import react, { useState } from 'react'
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import TextForm from "./components/TextForm";
 import Alert from './components/Alert';
+import { //For React Routing
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState('light'); //Wheather dark mode is enabled or not
@@ -12,8 +18,8 @@ function App() {
 
   const showalert = (message, type) => {
     setalert({
-      msg : message,
-      type : type
+      msg: message,
+      type: type
     })
 
     setTimeout(() => {
@@ -23,33 +29,34 @@ function App() {
 
   // changeMode function:
   const changeMode = (e) => {
-    if(mode === 'light') 
-    {
+    if (mode === 'light') {
       setmode('dark');
       //Because this changeMode function is in App.js, therfore its body is whole website body so we can change its background color from here easily.
       document.body.style.backgroundColor = '#282c34';
       showalert("Dark Mode Enabled!", "success");
+      //Changing the title dynamically when dark mode is enabled and you can do many more functionality like that.
       document.title = "TextAnalyzer - Dark Mode";
     }
-    else
-    {
+    else {
       setmode('light');
       document.body.style.backgroundColor = 'white';
       showalert("Light Mode Enabled!", "success");
       document.title = "TextAnalyzer - Light Mode";
-    } 
+    }
   }
 
   return (
     <>
       {/* If props values are not passed, then it will take defaultProps values */}
       {/* passing mode in the navbar. */}
-      <Navbar title="TextAnalyzer" aboutme="About Us" mode={mode} changeMode={changeMode} /> 
-      <Alert alert={alert}/>
+      <Navbar title="TextAnalyzer" aboutme="About Us" mode={mode} changeMode={changeMode} />
+      <Alert alert={alert} />
+
+
       <div className="container">
         {/* Passing showalert function as a prop in the Textform component */}
-        <TextForm heading="Enter the text" mode={mode} showalert={showalert}/> 
-        {/* <About /> */}
+        <TextForm heading="Enter the text" mode={mode} showalert={showalert} />
+        <About />
       </div>
     </>
   );
